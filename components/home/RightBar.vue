@@ -20,7 +20,9 @@
           <v-hover v-slot:default="{hover}">
             <v-card :elevation="hover ? 12 : 2" max-width="350" min-width="220" class="mt-0 mb-2 fa-0">
               <v-card-text>
-                <p class="ma-0">Convert local YYYY / MM / DD</p>
+                <v-layout justify-center align-center>
+                  <p class="ma-0">Convert local YYYY / MM / DD</p>
+                </v-layout>
                 <v-layout row>
                   <v-flex>
                     <v-text-field name="name" label="Year" v-model="year"></v-text-field>
@@ -32,7 +34,6 @@
                     <v-text-field name="name" label="Date" v-model="date"></v-text-field>
                   </v-flex>
                 </v-layout>
-                {{ year }}: {{ month}} : {{ date}}
               </v-card-text>
             </v-card>
           </v-hover>
@@ -42,7 +43,9 @@
         <v-hover v-slot:default="{hover}">
           <v-card :elevation="hover ? 12 : 2" max-width="350" min-width="220">
             <v-card-text>
-              <p class="ma-0">and HH : MM : SS</p>
+              <v-layout justify-center align-center>
+                <p class="ma-0">and HH : MM : SS</p>
+              </v-layout>
               <v-layout row>
                 <v-flex>
                   <v-text-field name="name" label="Hours" v-model="hour"></v-text-field>
@@ -64,7 +67,9 @@
             <v-card-text>
               <v-layout column justify-center align-center>
                 <p class="ma-0">To UTC Time & Date</p>
-                <p class="ma-0 mt-2">{{ new Date(`${month}/${date}/${year} ${hour}:${minute}:${second}`).getTime()}}</p>
+                <div v-if="year != ''">
+                  <p class="ma-0 mt-2">{{ Math.trunc((new Date(`${month}/${date}/${year} ${hour}:${minute}:${second}`).getTime())/1000)}}</p>
+                </div>
               </v-layout>
             </v-card-text>
           </v-card>

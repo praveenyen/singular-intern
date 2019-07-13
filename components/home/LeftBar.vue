@@ -13,7 +13,7 @@
             <br>
             <v-layout column justify-center align-center>
                 <p class="ma-0 grey--text">UNIX time</p>
-                <h3 class="teal--text mt-1">{{ new Date().valueOf() }}</h3>
+                <h3 class="teal--text mt-1">{{ Math.trunc((new Date().valueOf())/1000) }}</h3>
             </v-layout>
             
             <v-layout column justify-center align-center class="mt-4">
@@ -36,7 +36,9 @@
                         <v-card-text>
                             <v-layout column justify-center align-center>
                                 <p class="ma-0">To UTC Time & Date</p>
-                                <p class="ma-0 mt-2 teal--text font-weight-bold">{{ new Date(`${date}`/1).toUTCString() }}</p>
+                                <div v-if="date != null">
+                                    <p class="ma-0 mt-2 teal--text font-weight-bold">{{ new Date(`${date}`*1000).toUTCString() }}</p>
+                                </div>
                             </v-layout>
                         </v-card-text>
                     </v-card>
@@ -52,7 +54,9 @@
                         <v-card-text>
                             <v-layout column justify-center align-center>
                                 <p class="ma-0">To Local Time & Date</p>
-                                <p class="ma-0 mt-2 font-weight-bold">{{ new Date(`${date}`/1).toLocaleString() }}</p>
+                                <div v-if="date != null">
+                                    <p class="ma-0 mt-2 font-weight-bold">{{ new Date(`${date}`*1000).toLocaleString() }}</p>
+                                </div>
                             </v-layout>
                         </v-card-text>
                     </v-card>

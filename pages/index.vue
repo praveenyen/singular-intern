@@ -1,6 +1,8 @@
 <template>
   <v-container grid-list-xs>
-    <h2 class="teal--text display-1">Singularity Automation Services</h2>
+    <v-layout justify-center align-center class="ma-4">
+      <h2 class="teal--text display-1">Singularity Automation Services</h2>
+    </v-layout>
     <v-layout row wrap>
       <v-flex >
         <p class="blue--text mt-2">
